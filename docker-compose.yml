@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres
+    container_name: postgres-container
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: iakshatkumar
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: todoDB
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
