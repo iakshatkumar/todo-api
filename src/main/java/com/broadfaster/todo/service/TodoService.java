@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class TodoService {
@@ -41,5 +42,11 @@ public class TodoService {
             e.printStackTrace();
         }
         return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
+    }
+
+    public boolean deleteTodoById(Integer id) {
+        Todo todo = todoRepository.findById(id).get();
+        todoRepository.delete(todo);
+        return true;
     }
 }
